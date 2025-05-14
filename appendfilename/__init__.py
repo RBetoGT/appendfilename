@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-PROG_VERSION = u"Time-stamp: <2024-08-29 19:02:13 vk>"
+PROG_VERSION = u"Time-stamp: <2025-05-14 16:02:13 vk>"
 
 # TODO:
 # * fix parts marked with «FIXXME»
