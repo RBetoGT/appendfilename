@@ -5,8 +5,10 @@ version = "2026.03.01.1"
 description = "Intelligent appending text to file names, considering file extensions and file tags"
 license = "GPL-3.0-or-later"
 readme = { file = "README.org", content-type = "text/plain" }
+authors = [
+    { name = "Karl Voit", email = "tools@Karl-Voit.at" },
+]
 
-authors = ["Karl Voit <tools@Karl-Voit.at>"]
 keywords = [
     "file managing",
     "file management",
