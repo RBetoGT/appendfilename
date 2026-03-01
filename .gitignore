@@ -9,3 +9,4 @@ manualtests/
 build/
 appendfilename.egg-info/
 venv/
+update_mypi.sh
