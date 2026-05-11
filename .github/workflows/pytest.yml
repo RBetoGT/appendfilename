@@ -33,11 +33,9 @@ jobs:
     timeout-minutes: 5  # Timeout for each job individually
 
     steps:
-      - uses: actions/checkout@v4
-        # by [2024-10-23 Wed], this version possibly will be considered "old", cf.
-        # https://github.blog/changelog/2023-09-22-github-actions-transitioning-from-node-16-to-node-20/
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
 
