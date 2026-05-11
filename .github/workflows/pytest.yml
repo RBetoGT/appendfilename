@@ -3,11 +3,12 @@ name: CI_pytest_appendfilename
 # name    : pytest.yml
 # purpose : regularly run pytest on appendfilename
 # date    : [2024-10-31 Thu]
-# edit    : [2025-05-07 Wed]
+# edit    : [2026-05-11 Mon]
 
 on:
   push:
     branches:
+      - main
       - master
       - dev
   pull_request:
@@ -21,26 +22,28 @@ jobs:
   test:
     strategy:
       matrix:
-        # for a factorial test, an explicit selection of GitHUb runner images
+        # a factorial test which permutates the latest os runners with the most
+        # recent Python interpreter available, see
         # https://github.com/actions/runner-images?tab=readme-ov-file#available-images
         # state of commit 23478d3 as visited on 2025-05-07 Wed
-        os: [ubuntu-24.04, macos-15, windows-2025]
-        python-version: ["3.9", "3.13"]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        python-version: ["3.x"]
     runs-on: ${{ matrix.os }}
 
     timeout-minutes: 5  # Timeout for each job individually
 
     steps:
-      - uses: actions/checkout@v4
-        # by [2024-10-23 Wed], this version possibly will be considered "old", cf.
-        # https://github.blog/changelog/2023-09-22-github-actions-transitioning-from-node-16-to-node-20/
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies with PyPI
-        run: pip install .[dev]
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install pytest
 
       - name: run the check by pytest
         run: |
